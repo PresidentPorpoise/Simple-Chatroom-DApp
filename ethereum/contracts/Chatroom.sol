@@ -1,0 +1,121 @@
+pragma solidity ^0.5.1;
+// @title A simple chat-room Ethereum smart contract
+// @author Bryce Champaign
+contract Chatroom {
+    address public host;
+
+    address[] public members;
+    Message[] public chatLog;
+
+    mapping(uint => Message) msgIDPair;
+    mapping(address => bool) isMember;
+    mapping(address => string) usernames;
+
+    struct Message {
+        address author;
+        string content;
+    }
+
+    // @notice Creates the chat-room. Host role is given to the address of the sender
+    // @dev The password could be inferred from the constructor argument, not strong security
+    // @param _password The password the host wishes to set for the chat-room
+    constructor() public {
+        host = msg.sender;
+        addMember(host); // adds host address to members array
+        usernames[host] = "host";
+    }
+
+    // @notice Send a message `(_message)` to the chat-room (must be a member)
+    // @param _message The content of the message to be sent
+    function sendMessage(string calldata _message) external {
+        uint msgID = chatLog.length;
+
+        msgIDPair[msgID] = Message(msg.sender, _message); // pairs message ID with Message struct object
+        chatLog.push(msgIDPair[msgID]); // adds Message object to chatLog array
+
+        addMember(msg.sender);
+    }
+
+    // @notice Retrieve a message via ID `(_ID)`
+    // @param _ID The ID assigned to the desired message
+    // @return The target message
+    function getMessage(uint _ID) public view returns(string memory) {
+        return(msgIDPair[_ID].content);
+    }
+
+    // @notice Retrieve a message's author via ID '(ID)'
+    // @param _ID The ID assigned to the desired message
+    // @return The target message's author
+    function getAuthor(uint _ID) public view returns(address) {
+        return(msgIDPair[_ID]).author;
+    }
+
+    // @notice Associate a username with an address
+    // @param _username The desired username
+    function setUsername(string memory _username) public {
+        usernames[msg.sender] = _username;
+    }
+
+    // @notice Retrieve username associated with an address
+    // @param _target The address associated with a username
+    // @return The username associated with the provided address
+    function getUsername(address _target) public view returns(string memory) {
+        return(usernames[_target]);
+    }
+
+    // @notice Check if an address is a member
+    // @param _target The address to be checked
+    // @return true if the target address is a member, false otherwise
+    function checkMember(address _target) public view returns(bool) {
+        if (isMember[_target] == true) { // returns true if address has a "true" value assigned in isMember mapping table
+            return(true);
+        }
+        else { // returns false if address does not have a "true" value assigned in isMember mapping table
+            return(false);
+        }
+    }
+
+    modifier mustBeMember() {
+        require(checkMember(msg.sender) == true);
+        _;
+    }
+
+    // @notice Add a new member address that is not already a member
+    // @dev This is a helper function
+    // @param _newMember The address to be granted membership
+    function addMember(address _newMember) private {
+        if (isMember[_newMember] == true) { // does nothing if address is already a member
+            return();
+        }
+        else { // adds address to isMember mapping table and pushes the address to the members array
+            isMember[_newMember] = true;
+            members.push(msg.sender);
+        }
+    }
+
+    // @notice Retrieve a list of all members
+    // @return A list of all member addresses
+    function getMembers() public view returns(address[] memory) {
+        return(members);
+    }
+
+    modifier onlyHost {
+        require(msg.sender == host);
+        _;
+    }
+
+    // @notice Transfer 'Host' role to another member (requires 'host' status)
+    // @param newHost The address of the member to be granted the 'host' role.
+    function switchHost(address newHost) external onlyHost {
+        require(checkMember(newHost));
+
+        host = newHost;
+    }
+
+    // @notice Get length of chatLog array
+    // @dev Useful for displaying messages on front-end
+    function getMessagesLength() external view returns (uint) {
+      return(chatLog.length);
+    }
+
+}
