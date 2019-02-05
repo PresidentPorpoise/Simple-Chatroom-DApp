@@ -58,14 +58,14 @@ class Index extends Component {
 
       if (username == "") {
         return {
-          header: string,
-          description: this.getAuthors(this.props.chatLog.indexOf(string)),
+          description: string,
+          meta: this.getAuthors(this.props.chatLog.indexOf(string)),
           fluid: true
         };
       } else {
         return {
-          header: string,
-          description: username,
+          description: string,
+          meta: username,
           fluid: true
         };
       }
