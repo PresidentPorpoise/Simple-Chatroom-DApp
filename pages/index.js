@@ -13,13 +13,24 @@ class Index extends Component {
 
     var chatLog = [];
     var authors = [];
+    var usernames = [];
 
     for (let i = 0; i < chatLength; i++) {
       let message = await chatroom.methods.getMessage(i).call({
         from: accounts[0]
       });
 
+      let author = await chatroom.methods.getAuthor(i).call({
+        from: accounts[0]
+      });
+
+      let username = await chatroom.methods.getUsername(author).call({
+        from: accounts[0]
+      });
+
       chatLog.push(message);
+      authors.push(author);
+      usernames.push(username);
     }
 
     for (let i = 0; i < chatLength; i++) {
@@ -30,24 +41,40 @@ class Index extends Component {
       authors.push(author);
     }
     console.log(authors);
-    return { chatLog, authors }
+    return { chatLog, authors, usernames }
   }
 
-  getAuthors(i) {
-    return this.props.authors[i];
+  getAuthors(index) {
+    return this.props.authors[index];
+  }
+
+  getUsernames(index) {
+    return this.props.usernames[index];
   }
 
   renderChat() {
     const items = this.props.chatLog.map(string => {
-      return {
-        header: string,
-        description: this.getAuthors(this.props.chatLog.indexOf(string)),
-        fluid: true
-      };
+      var username = this.getUsernames(this.props.chatLog.indexOf(string));
+
+      if (username == "") {
+        return {
+          header: string,
+          description: this.getAuthors(this.props.chatLog.indexOf(string)),
+          fluid: true
+        };
+      } else {
+        return {
+          header: string,
+          description: username,
+          fluid: true
+        };
+      }
     });
 
-    return <Feed.Summary items={items}/>
+    return <Card.Group items={items}/>
+    console.log(items);
   }
+
 
   render() {
     return(
@@ -66,11 +93,7 @@ class Index extends Component {
             <Card.Header>Chatroom</Card.Header>
           </Card.Content>
           <Card.Content>
-            <Feed>
-              <Feed.Content>
-                {this.renderChat()}
-              </Feed.Content>          
-            </Feed>
+              {this.renderChat()}
           </Card.Content>
         </Card>
 
