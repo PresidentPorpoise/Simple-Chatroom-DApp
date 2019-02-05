@@ -13,7 +13,7 @@ const deploy = async () => {
 
   console.log('Attempting to deploy from account', accounts[0]);
 
-  const result = await new web3.eth.Contract(JSON.parse(compiledChatroom))
+  const result = await new web3.eth.Contract(JSON.parse(compiledChatroom.interface))
       .deploy({ data: '0x' + compiledChatroom.bytecode })
       .send({ from: accounts[0] });
 

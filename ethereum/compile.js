@@ -12,7 +12,7 @@ const source = fs.readFileSync(chatroomPath, 'utf8');
 var input = {
 	language: 'Solidity',
 	sources: {
-		'Chatroom.sol': {
+		'Chatroom': {
 			"content": source
 		}
 	},
@@ -21,12 +21,12 @@ var input = {
       "*": {
         "*": ["evm.bytecode", "abi"]
       },
-		
+
 		}
 	}
 }
 
-var output = JSON.parse(solc.compile(JSON.stringify(input))).contracts['Chatroom.sol'];
+var output = JSON.parse(solc.compile(JSON.stringify(input))).contracts;
 //
 
 fs.ensureDirSync(buildPath);
