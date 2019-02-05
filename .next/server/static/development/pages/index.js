@@ -168,7 +168,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/head */ "next/head");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_5__);
 
-var _jsxFileName = "C:\\Users\\becha\\Documents\\React Projects\\chatroom-dapp\\pages\\index.js";
+var _jsxFileName = "D:\\Documents\\Dapp projects\\Simple-Chatroom-DApp-master\\pages\\index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -211,8 +211,13 @@ function (_Component) {
 
   _createClass(Index, [{
     key: "getAuthors",
-    value: function getAuthors(i) {
-      return this.props.authors[i];
+    value: function getAuthors(index) {
+      return this.props.authors[index];
+    }
+  }, {
+    key: "getUsernames",
+    value: function getUsernames(index) {
+      return this.props.usernames[index];
     }
   }, {
     key: "renderChat",
@@ -220,20 +225,31 @@ function (_Component) {
       var _this = this;
 
       var items = this.props.chatLog.map(function (string) {
-        return {
-          header: string,
-          description: _this.getAuthors(_this.props.chatLog.indexOf(string)),
-          fluid: true
-        };
+        var username = _this.getUsernames(_this.props.chatLog.indexOf(string));
+
+        if (username == "") {
+          return {
+            header: string,
+            description: _this.getAuthors(_this.props.chatLog.indexOf(string)),
+            fluid: true
+          };
+        } else {
+          return {
+            header: string,
+            description: username,
+            fluid: true
+          };
+        }
       });
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Feed"].Summary, {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Card"].Group, {
         items: items,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49
+          lineNumber: 74
         },
         __self: this
       });
+      console.log(items);
     }
   }, {
     key: "render",
@@ -241,13 +257,13 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 81
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_5___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 82
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("link", {
@@ -255,53 +271,41 @@ function (_Component) {
         href: "//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 83
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 62
+          lineNumber: 89
         },
         __self: this
       }, "Chatroom Application"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Card"], {
         fluid: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 91
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Card"].Content, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 65
+          lineNumber: 92
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 66
+          lineNumber: 93
         },
         __self: this
       }, "Chatroom")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Card"].Content, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
+          lineNumber: 95
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Feed"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 69
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Feed"].Content, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 70
-        },
-        __self: this
-      }, this.renderChat())))));
+      }, this.renderChat())));
     }
   }], [{
     key: "getInitialProps",
@@ -309,7 +313,7 @@ function (_Component) {
       var _getInitialProps = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var accounts, chatLength, chatLog, authors, i, message, _i, author;
+        var accounts, chatLength, chatLog, authors, usernames, i, message, author, username, _i, _author;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -329,59 +333,77 @@ function (_Component) {
                 chatLength = _context.sent;
                 chatLog = [];
                 authors = [];
+                usernames = [];
                 i = 0;
 
-              case 9:
+              case 10:
                 if (!(i < chatLength)) {
-                  _context.next = 17;
-                  break;
-                }
-
-                _context.next = 12;
-                return _ethereum_chatroom_js__WEBPACK_IMPORTED_MODULE_3__["default"].methods.getMessage(i).call({
-                  from: accounts[0]
-                });
-
-              case 12:
-                message = _context.sent;
-                chatLog.push(message);
-
-              case 14:
-                i++;
-                _context.next = 9;
-                break;
-
-              case 17:
-                _i = 0;
-
-              case 18:
-                if (!(_i < chatLength)) {
                   _context.next = 26;
                   break;
                 }
 
-                _context.next = 21;
+                _context.next = 13;
+                return _ethereum_chatroom_js__WEBPACK_IMPORTED_MODULE_3__["default"].methods.getMessage(i).call({
+                  from: accounts[0]
+                });
+
+              case 13:
+                message = _context.sent;
+                _context.next = 16;
+                return _ethereum_chatroom_js__WEBPACK_IMPORTED_MODULE_3__["default"].methods.getAuthor(i).call({
+                  from: accounts[0]
+                });
+
+              case 16:
+                author = _context.sent;
+                _context.next = 19;
+                return _ethereum_chatroom_js__WEBPACK_IMPORTED_MODULE_3__["default"].methods.getUsername(author).call({
+                  from: accounts[0]
+                });
+
+              case 19:
+                username = _context.sent;
+                chatLog.push(message);
+                authors.push(author);
+                usernames.push(username);
+
+              case 23:
+                i++;
+                _context.next = 10;
+                break;
+
+              case 26:
+                _i = 0;
+
+              case 27:
+                if (!(_i < chatLength)) {
+                  _context.next = 35;
+                  break;
+                }
+
+                _context.next = 30;
                 return _ethereum_chatroom_js__WEBPACK_IMPORTED_MODULE_3__["default"].methods.getAuthor(_i).call({
                   from: accounts[0]
                 });
 
-              case 21:
-                author = _context.sent;
-                authors.push(author);
+              case 30:
+                _author = _context.sent;
+                authors.push(_author);
 
-              case 23:
+              case 32:
                 _i++;
-                _context.next = 18;
+                _context.next = 27;
                 break;
 
-              case 26:
+              case 35:
                 console.log(authors);
                 return _context.abrupt("return", {
                   chatLog: chatLog,
-                  authors: authors
+                  authors: authors,
+                  usernames: usernames
                 });
 
-              case 28:
+              case 37:
               case "end":
                 return _context.stop();
             }
