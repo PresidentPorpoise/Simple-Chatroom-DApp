@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { Card, Button, Feed } from 'semantic-ui-react';
-import chatroom from '../ethereum/chatroom.js';
-import web3 from '../ethereum/web3.js';
-import Head from 'next/head';
+import { Card, Button, Container, Divider, Label, List, Icon, Form } from 'semantic-ui-react';
+import chatroom from '../ethereum/chatroom';
+import web3 from '../ethereum/web3';
+import Layout from '../components/Layout';
 
 class Index extends Component {
+  state= {
+    messageContent: '',
+    usernameContent: ''
+  };
+
   static async getInitialProps() {
     const accounts = await web3.eth.getAccounts();
     const chatLength = await chatroom.methods.getMessagesLength().call({
@@ -44,6 +49,24 @@ class Index extends Component {
     return { chatLog, authors, usernames }
   }
 
+  onSend = async (event) => {
+    event.preventDefault();
+    const accounts = await web3.eth.getAccounts();
+
+    await chatroom.methods.sendMessage(this.state.messageContent).send({
+      from: accounts[0]
+    });
+  }
+
+  onChange = async (event) => {
+    event.preventDefault();
+    const accounts = await web3.eth.getAccounts();
+
+    await chatroom.methods.setUsername(this.state.usernameContent).send({
+      from: accounts[0]
+    });
+  }
+
   getAuthors(index) {
     return this.props.authors[index];
   }
@@ -53,52 +76,83 @@ class Index extends Component {
   }
 
   renderChat() {
-    const items = this.props.chatLog.map(string => {
-      var username = this.getUsernames(this.props.chatLog.indexOf(string));
+    let message;
+    let author;
+    let username;
+    let items = []
+
+    for (var i = 0; i < this.props.chatLog.length; i++) {
+      message = this.props.chatLog[i];
+      author = this.getAuthors(i);
+      username = this.getUsernames(i);
 
       if (username == "") {
-        return {
-          description: string,
-          meta: this.getAuthors(this.props.chatLog.indexOf(string)),
-          fluid: true
-        };
+        items.push
+          (<List.Item>
+            <List.Content>
+              <List.Header as='a'>{author}</List.Header>
+              <List.Description>
+                {message} <Divider/>
+              </List.Description>
+            </List.Content>
+          </List.Item>)
       } else {
-        return {
-          description: string,
-          meta: username,
-          fluid: true
-        };
+        items.push
+          (<List.Item>
+            <List.Content>
+              <List.Header as='a'>{username}</List.Header>
+              <List.Description>
+                {message} <Divider/>
+              </List.Description>
+            </List.Content>
+          </List.Item>)
       }
-    });
+    }
 
-    return <Card.Group items={items}/>
-    console.log(items);
+    return items;
   }
-
 
   render() {
     return(
-      <div>
-        <Head>
-          <link
-            rel="stylesheet"
-            href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
-          />
-        </Head>
-
-        <h1>Chatroom Application</h1>
-
-        <Card fluid>
-          <Card.Content>
-            <Card.Header>Chatroom</Card.Header>
-          </Card.Content>
-          <Card.Content>
+      <Layout>
+        <div>
+          <Container>
+            <List>
               {this.renderChat()}
-          </Card.Content>
-        </Card>
+            </List>
 
+            <Form onSubmit={this.onSend}>
+              <Form.Input required
+                placeholder="Enter a message..."
+                value={this.state.messageContent}
+                onChange={event => this.setState({ messageContent: event.target.value})}
+              />
 
-      </div>
+              <Button
+                content='Send'
+                icon='send'
+                primary
+              />
+            </Form>
+
+            <Divider hidden />
+
+            <Form label="Username" onSubmit={this.onChange}>
+              <h3>Change username</h3>
+              <Form.Input required
+                placeholder="Enter a new username..."
+                value={this.state.usernameContent}
+                onChange={event => this.setState({ usernameContent: event.target.value})}
+              />
+
+              <Button
+                content='Change'
+                icon='pencil'
+              />
+            </Form>
+          </Container>
+        </div>
+      </Layout>
     );
   }
 }
