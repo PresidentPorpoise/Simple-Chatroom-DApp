@@ -1,5 +1,4 @@
-pragma solidity ^0.4.25;
-
+pragma solidity ^0.5.1;
 // @title A simple chat-room Ethereum smart contract
 // @author Bryce Champaign
 contract Chatroom {
@@ -28,7 +27,7 @@ contract Chatroom {
 
     // @notice Send a message `(_message)` to the chat-room (must be a member)
     // @param _message The content of the message to be sent
-    function sendMessage(string _message) external {
+    function sendMessage(string calldata _message) external {
         uint msgID = chatLog.length;
 
         msgIDPair[msgID] = Message(msg.sender, _message); // pairs message ID with Message struct object
@@ -40,7 +39,7 @@ contract Chatroom {
     // @notice Retrieve a message via ID `(_ID)`
     // @param _ID The ID assigned to the desired message
     // @return The target message
-    function getMessage(uint _ID) public view returns(string) {
+    function getMessage(uint _ID) public view returns(string memory) {
         return(msgIDPair[_ID].content);
     }
 
@@ -53,14 +52,14 @@ contract Chatroom {
 
     // @notice Associate a username with an address
     // @param _username The desired username
-    function setUsername(string _username) public {
+    function setUsername(string memory _username) public {
         usernames[msg.sender] = _username;
     }
 
     // @notice Retrieve username associated with an address
     // @param _target The address associated with a username
     // @return The username associated with the provided address
-    function getUsername(address _target) public view returns(string) {
+    function getUsername(address _target) public view returns(string memory) {
         return(usernames[_target]);
     }
 
@@ -96,7 +95,7 @@ contract Chatroom {
 
     // @notice Retrieve a list of all members
     // @return A list of all member addresses
-    function getMembers() public view returns(address[]) {
+    function getMembers() public view returns(address[] memory) {
         return(members);
     }
 

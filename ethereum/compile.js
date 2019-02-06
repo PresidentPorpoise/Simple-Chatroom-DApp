@@ -8,11 +8,6 @@ fs.removeSync(buildPath);
 const chatroomPath = path.resolve(__dirname, 'contracts', 'Chatroom.sol');
 const source = fs.readFileSync(chatroomPath, 'utf8');
 
-try {
-
-} catch(err) {
-
-}
 var input = {
 	language: 'Solidity',
 	sources: {

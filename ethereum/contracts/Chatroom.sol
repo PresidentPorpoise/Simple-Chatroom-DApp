@@ -25,6 +25,12 @@ contract Chatroom {
         usernames[host] = "host";
     }
 
+    event SendMessage(
+        string indexed _msgContent,
+        address indexed _from,
+        uint _ID
+    );
+
     // @notice Send a message `(_message)` to the chat-room (must be a member)
     // @param _message The content of the message to be sent
     function sendMessage(string calldata _message) external {
@@ -34,6 +40,8 @@ contract Chatroom {
         chatLog.push(msgIDPair[msgID]); // adds Message object to chatLog array
 
         addMember(msg.sender);
+
+        emit SendMessage(_message, msg.sender, msgID);
     }
 
     // @notice Retrieve a message via ID `(_ID)`
