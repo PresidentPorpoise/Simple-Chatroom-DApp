@@ -20,6 +20,8 @@ class Index extends Component {
     var authors = [];
     var usernames = [];
 
+    var sendEvent = chatroom.SendMessage();
+
     for (let i = 0; i < chatLength; i++) {
       let message = await chatroom.methods.getMessage(i).call({
         from: accounts[0]
