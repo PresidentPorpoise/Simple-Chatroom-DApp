@@ -20,7 +20,7 @@ class Index extends Component {
     var authors = [];
     var usernames = [];
 
-    var sendEvent = chatroom.SendMessage();
+    //var sendEvent = chatroom.SendMessage();
 
     for (let i = 0; i < chatLength; i++) {
       let message = await chatroom.methods.getMessage(i).call({
@@ -124,11 +124,14 @@ class Index extends Component {
             </List>
 
             <Form onSubmit={this.onSend}>
-              <Form.Input required
-                placeholder="Enter a message..."
-                value={this.state.messageContent}
-                onChange={event => this.setState({ messageContent: event.target.value})}
-              />
+              <Form.Field>
+                <label>Send a Message</label>
+                <Form.Input required
+                  placeholder="Enter a message..."
+                  value={this.state.messageContent}
+                  onChange={event => this.setState({ messageContent: event.target.value})}
+                />
+              </Form.Field>
 
               <Button
                 content='Send'
@@ -139,13 +142,15 @@ class Index extends Component {
 
             <Divider hidden />
 
-            <Form label="Username" onSubmit={this.onChange}>
-              <h3>Change username</h3>
-              <Form.Input required
-                placeholder="Enter a new username..."
-                value={this.state.usernameContent}
-                onChange={event => this.setState({ usernameContent: event.target.value})}
-              />
+            <Form onSubmit={this.onChange}>
+              <Form.Field>
+                <label>Change Username</label>
+                <Form.Input required
+                  placeholder="Enter a new username..."
+                  value={this.state.usernameContent}
+                  onChange={event => this.setState({ usernameContent: event.target.value})}
+                />
+              </Form.Field>
 
               <Button
                 content='Change'
