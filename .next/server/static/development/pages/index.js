@@ -106,7 +106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
 /* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "C:\\Users\\becha\\Documents\\Simple-Chatroom-DApp\\components\\Header.js";
+var _jsxFileName = "D:\\Documents\\Dapp projects\\Simple-Chatroom-DApp-master\\components\\Header.js";
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -134,6 +134,7 @@ var _jsxFileName = "C:\\Users\\becha\\Documents\\Simple-Chatroom-DApp\\component
     },
     __self: this
   }), "Chatroom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Menu"].Item, {
+    position: "right",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 12
@@ -147,7 +148,6 @@ var _jsxFileName = "C:\\Users\\becha\\Documents\\Simple-Chatroom-DApp\\component
     },
     __self: this
   }), "Code"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Menu"].Item, {
-    position: "right",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 17
@@ -181,7 +181,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/head */ "next/head");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
-var _jsxFileName = "C:\\Users\\becha\\Documents\\Simple-Chatroom-DApp\\components\\Layout.js";
+var _jsxFileName = "D:\\Documents\\Dapp projects\\Simple-Chatroom-DApp-master\\components\\Layout.js";
 
 
 
@@ -294,7 +294,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ethereum_web3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ethereum/web3 */ "./ethereum/web3.js");
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 
-var _jsxFileName = "C:\\Users\\becha\\Documents\\Simple-Chatroom-DApp\\pages\\index.js";
+var _jsxFileName = "D:\\Documents\\Dapp projects\\Simple-Chatroom-DApp-master\\pages\\index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -449,32 +449,32 @@ function (_Component) {
           items.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Item, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 91
+              lineNumber: 93
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Content, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 92
+              lineNumber: 94
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Header, {
             as: "a",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 93
+              lineNumber: 95
             },
             __self: this
           }, author), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Description, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 94
+              lineNumber: 96
             },
             __self: this
           }, message, " ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Divider"], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 95
+              lineNumber: 97
             },
             __self: this
           })))));
@@ -482,32 +482,32 @@ function (_Component) {
           items.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Item, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 101
+              lineNumber: 103
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Content, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 102
+              lineNumber: 104
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Header, {
             as: "a",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 103
+              lineNumber: 105
             },
             __self: this
           }, username), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Description, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 104
+              lineNumber: 106
             },
             __self: this
           }, message, " ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Divider"], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 105
+              lineNumber: 107
             },
             __self: this
           })))));
@@ -524,35 +524,47 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Layout__WEBPACK_IMPORTED_MODULE_5__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 117
+          lineNumber: 119
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 118
+          lineNumber: 120
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 119
+          lineNumber: 121
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 120
+          lineNumber: 122
         },
         __self: this
       }, this.renderChat()), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Form"], {
         onSubmit: this.onSend,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 124
+          lineNumber: 126
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Form"].Input, {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Form"].Field, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 127
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 128
+        },
+        __self: this
+      }, "Send a Message"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Form"].Input, {
         required: true,
         placeholder: "Enter a message...",
         value: this.state.messageContent,
@@ -563,40 +575,45 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 125
+          lineNumber: 129
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         content: "Send",
         icon: "send",
         primary: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 131
+          lineNumber: 136
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Divider"], {
         hidden: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 138
+          lineNumber: 143
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Form"], {
-        label: "Username",
         onSubmit: this.onChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140
+          lineNumber: 145
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Form"].Field, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 141
+          lineNumber: 146
         },
         __self: this
-      }, "Change username"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Form"].Input, {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 147
+        },
+        __self: this
+      }, "Change Username"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Form"].Input, {
         required: true,
         placeholder: "Enter a new username...",
         value: this.state.usernameContent,
@@ -607,15 +624,15 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142
+          lineNumber: 148
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         content: "Change",
         icon: "pencil",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 148
+          lineNumber: 155
         },
         __self: this
       })))));
@@ -646,7 +663,8 @@ function (_Component) {
                 chatLength = _context3.sent;
                 chatLog = [];
                 authors = [];
-                usernames = [];
+                usernames = []; //var sendEvent = chatroom.SendMessage();
+
                 i = 0;
 
               case 10:

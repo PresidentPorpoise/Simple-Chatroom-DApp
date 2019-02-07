@@ -9,12 +9,12 @@ export default () => {
         Chatroom
       </Menu.Item>
 
-      <Menu.Item>
+      <Menu.Item position="right">
         <Icon name='github' />
         Code
       </Menu.Item>
 
-      <Menu.Item position="right">
+      <Menu.Item>
         <Icon name='question circle' />
         About
       </Menu.Item>
