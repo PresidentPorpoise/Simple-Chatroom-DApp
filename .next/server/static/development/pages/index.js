@@ -541,6 +541,7 @@ function (_Component) {
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
         padded: true,
+        stackable: true,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 122
