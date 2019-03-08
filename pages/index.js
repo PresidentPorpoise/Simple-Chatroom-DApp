@@ -119,7 +119,7 @@ class Index extends Component {
       <Layout>
         <div>
           <Container>
-            <Grid padded>
+            <Grid padded stackable>
               <Grid.Row columns={1}>
                 <Grid.Column>
                   <Container>
