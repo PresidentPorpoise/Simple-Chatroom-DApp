@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Container, Divider, Label, List, Icon, Form, Grid } from 'semantic-ui-react';
+import { Card, Button, Container, Divider, Label, List, Icon, Form, Grid, Segment } from 'semantic-ui-react';
 import chatroom from '../ethereum/chatroom';
 import web3 from '../ethereum/web3';
 import Layout from '../components/Layout';
@@ -114,6 +114,11 @@ class Index extends Component {
     return items;
   }
 
+  componentDidMount() {
+    let element = document.getElementById("chat");
+    element.scrollTop = element.scrollHeight;
+  }
+
   render() {
     return(
       <Layout>
@@ -122,62 +127,55 @@ class Index extends Component {
             <Grid padded stackable>
               <Grid.Row columns={1}>
                 <Grid.Column>
-                  <Container>
-                    <Card fluid relaxed>
-                      <Card.Content>
-                        <List>
-                          {this.renderChat()}
-                        </List>
-                      </Card.Content>
-                    </Card>
-
-                  </Container>
+                  <div style={{height: '40em'}}>
+                    <Segment fluid style={{minHeight: '40em', maxHeight: '35em', overflow: 'auto' }} id="chat">
+                      <List>
+                        {this.renderChat()}
+                      </List>
+                    </Segment>
+                  </div>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row columns={2}>
                 <Grid.Column>
-                  <Card fluid>
-                    <Card.Content>
-                      <Form onSubmit={this.onSend}>
-                        <Form.Field>
-                          <label>Send a Message</label>
-                          <Form.Input required
-                            placeholder="Enter a message..."
-                            value={this.state.messageContent}
-                            onChange={event => this.setState({ messageContent: event.target.value})}
-                          />
-                        </Form.Field>
-
-                        <Button
-                          content='Send'
-                          icon='send'
-                          primary
+                  <Segment fluid>
+                    <Form onSubmit={this.onSend}>
+                      <Form.Field>
+                        <label>Send a Message</label>
+                        <Form.Input required
+                          placeholder="Enter a message..."
+                          value={this.state.messageContent}
+                          onChange={event => this.setState({ messageContent: event.target.value})}
                         />
-                      </Form>
-                    </Card.Content>
-                  </Card>
+                      </Form.Field>
+
+                      <Button
+                        content='Send'
+                        icon='send'
+                        primary
+                      />
+                    </Form>
+                  </Segment>
                 </Grid.Column>
 
                 <Grid.Column>
-                  <Card fluid>
-                    <Card.Content>
-                      <Form onSubmit={this.onChange}>
-                        <Form.Field>
-                          <label>Change Username</label>
-                          <Form.Input required
-                            placeholder="Enter a new username..."
-                            value={this.state.usernameContent}
-                            onChange={event => this.setState({ usernameContent: event.target.value})}
-                          />
-                        </Form.Field>
-
-                        <Button
-                          content='Change'
-                          icon='pencil'
+                  <Segment>
+                    <Form onSubmit={this.onChange}>
+                      <Form.Field>
+                        <label>Change Username</label>
+                        <Form.Input required
+                          placeholder="Enter a new username..."
+                          value={this.state.usernameContent}
+                          onChange={event => this.setState({ usernameContent: event.target.value})}
                         />
-                      </Form>
-                    </Card.Content>
-                  </Card>
+                      </Form.Field>
+
+                      <Button
+                        content='Change'
+                        icon='pencil'
+                      />
+                    </Form>
+                  </Segment>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
