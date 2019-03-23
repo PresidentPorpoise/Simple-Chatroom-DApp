@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container } from 'semantic-ui-react';
 import Head from 'next/head';
-import Header from './Header'; // place html nested in tag to inject into page header
+import Header from './Header';
 
-export default (props) => { // functional components called with props argument
+export default (props) => {
   return (
     <Container>
       <Head>
