@@ -3,7 +3,7 @@ import { Menu, Icon, Input, Button } from 'semantic-ui-react';
 
 export default () => {
   return (
-    <Menu style={{ marginTop: '10px'}} size='medium'>
+    <Menu style={{ marginTop: '10px'}} size='medium' secondary>
       <Menu.Item>
         <Icon name='home' />
         Chatroom
