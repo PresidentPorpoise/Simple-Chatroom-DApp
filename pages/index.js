@@ -128,7 +128,7 @@ class Index extends Component {
               <Grid.Row columns={1}>
                 <Grid.Column>
                   <div style={{height: '40em'}}>
-                    <Segment fluid style={{minHeight: '40em', maxHeight: '35em', overflow: 'auto' }} id="chat">
+                    <Segment style={{minHeight: '40em', maxHeight: '35em', overflow: 'auto' }} id="chat">
                       <List>
                         {this.renderChat()}
                       </List>
@@ -138,7 +138,7 @@ class Index extends Component {
               </Grid.Row>
               <Grid.Row columns={2}>
                 <Grid.Column>
-                  <Segment fluid>
+                  <Segment>
                     <Form onSubmit={this.onSend}>
                       <Form.Field>
                         <label>Send a Message</label>
