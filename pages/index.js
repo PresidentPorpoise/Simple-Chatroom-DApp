@@ -123,48 +123,61 @@ class Index extends Component {
               <Grid.Row columns={1}>
                 <Grid.Column>
                   <Container>
-                    <List>
-                      {this.renderChat()}
-                    </List>
+                    <Card fluid relaxed>
+                      <Card.Content>
+                        <List>
+                          {this.renderChat()}
+                        </List>
+                      </Card.Content>
+                    </Card>
+
                   </Container>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row columns={2}>
                 <Grid.Column>
-                  <Form onSubmit={this.onSend}>
-                    <Form.Field>
-                      <label>Send a Message</label>
-                      <Form.Input required
-                        placeholder="Enter a message..."
-                        value={this.state.messageContent}
-                        onChange={event => this.setState({ messageContent: event.target.value})}
-                      />
-                    </Form.Field>
+                  <Card fluid>
+                    <Card.Content>
+                      <Form onSubmit={this.onSend}>
+                        <Form.Field>
+                          <label>Send a Message</label>
+                          <Form.Input required
+                            placeholder="Enter a message..."
+                            value={this.state.messageContent}
+                            onChange={event => this.setState({ messageContent: event.target.value})}
+                          />
+                        </Form.Field>
 
-                    <Button
-                      content='Send'
-                      icon='send'
-                      primary
-                    />
-                  </Form>
+                        <Button
+                          content='Send'
+                          icon='send'
+                          primary
+                        />
+                      </Form>
+                    </Card.Content>
+                  </Card>
                 </Grid.Column>
 
                 <Grid.Column>
-                  <Form onSubmit={this.onChange}>
-                    <Form.Field>
-                      <label>Change Username</label>
-                      <Form.Input required
-                        placeholder="Enter a new username..."
-                        value={this.state.usernameContent}
-                        onChange={event => this.setState({ usernameContent: event.target.value})}
-                      />
-                    </Form.Field>
+                  <Card fluid>
+                    <Card.Content>
+                      <Form onSubmit={this.onChange}>
+                        <Form.Field>
+                          <label>Change Username</label>
+                          <Form.Input required
+                            placeholder="Enter a new username..."
+                            value={this.state.usernameContent}
+                            onChange={event => this.setState({ usernameContent: event.target.value})}
+                          />
+                        </Form.Field>
 
-                    <Button
-                      content='Change'
-                      icon='pencil'
-                    />
-                  </Form>
+                        <Button
+                          content='Change'
+                          icon='pencil'
+                        />
+                      </Form>
+                    </Card.Content>
+                  </Card>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
