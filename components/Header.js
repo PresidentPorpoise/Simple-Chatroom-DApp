@@ -17,7 +17,7 @@ class Header extends Component {
           <Responsive minWidth={800}>
             <Menu secondary className="navbar-items">
               <Menu.Item header>
-                <Link href='/'><a>Chatroom DApp</a></Link>
+                <Link href='/'><a>Home</a></Link>
               </Menu.Item>
 
               <Menu.Item  position="right" href='/about'>
