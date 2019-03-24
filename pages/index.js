@@ -123,7 +123,7 @@ class Index extends Component {
     return(
       <Layout>
         <div>
-          <div id="banner">
+          <div className="banner">
             <h1>Simple Chatroom Dapp</h1>
           </div>
           <Container style={{ paddingTop: 20, paddingBottom: 20}}>
