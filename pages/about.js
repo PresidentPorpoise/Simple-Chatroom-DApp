@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Layout from '../components/Layout';
-import { Container, Divider, Segment, Button, Card } from 'semantic-ui-react';
+import { Container, Divider, Segment, Button, Card, Icon } from 'semantic-ui-react';
+import { Link } from '../routes.js';
 
 class About extends Component {
   render() {
@@ -9,7 +10,7 @@ class About extends Component {
         <div className='banner' id="miniBanner">
           <h1>About</h1>
         </div>
-        <Container style={{ paddingTop: 30, paddingBottom: 150 }}>
+        <Container id='about-body'>
           <h2>Why/What?</h2>
 
           <p>This decentralized application was developed for learning purposes. It uses the
@@ -18,7 +19,7 @@ class About extends Component {
             containing message and username data to the chatroom smart contract. The front-end
             then retrieves the data from the smart contract, which acts as a back-end,
              and displays it to users. Users require Metamask or some other method
-            of accessing the Ethereum network in order to use this application.
+            of connecting to the Ethereum network in order to use this application.
           </p>
 
             <Divider />
@@ -32,17 +33,24 @@ class About extends Component {
             <Divider />
 
             <h2>Links:</h2>
-            <Button size='large'>
-              <Button.Content>
-                Github Repository
-              </Button.Content>
-            </Button>
+            <Link href='https://github.com/PresidentPorpoise/Simple-Chatroom-DApp'>
+              <a>
+                <Button size='large'>
+                  <Icon name='github' />
+                    Github Repository
+                  </Button>
+                </a>
+            </Link>
 
-            <Button size='large'>
-              <Button.Content>
-                My Portfolio
-              </Button.Content>
-            </Button>
+            <Link href='https://www.brycechampaign.me'>
+              <a>
+                <Button size='large'>
+                  <Icon name='book' />
+                    My Portfolio
+                  </Button>
+                </a>
+            </Link>
+
 
             <Divider />
 
@@ -60,7 +68,7 @@ class About extends Component {
                 <Card.Content>
                   <Card.Header>Nano</Card.Header>
                   <Card.Meta>Address</Card.Meta>
-                  <Card.Description content='0x8B2b2520fc14b8a625D40ee3CBccAa2061b53504' />
+                  <Card.Description content='xrb_13qi6a6hjz53a1cp6yejpj9rbdr5ze9hrcpa8jxbf9otb56mxonmw84crgbz' />
                 </Card.Content>
               </Card>
 
