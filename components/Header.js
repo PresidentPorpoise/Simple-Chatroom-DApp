@@ -12,7 +12,10 @@ class Header extends Component {
       <div>
         <Head>
           <title>Chatroom DApp</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+          />
         </Head>
           <Responsive minWidth={800}>
             <Menu secondary className="navbar-items">
@@ -23,7 +26,9 @@ class Header extends Component {
               <Menu.Item  position="right" href='/about'>
                 About
               </Menu.Item>
-              <Menu.Item href='https://github.com/PresidentPorpoise/Simple-Chatroom-DApp'>
+              <Menu.Item
+                href='https://github.com/PresidentPorpoise/Simple-Chatroom-DApp'
+              >
                 Github
               </Menu.Item>
             </Menu>
