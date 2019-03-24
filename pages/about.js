@@ -51,6 +51,7 @@ class About extends Component {
               <Card className='card-text'>
                 <Card.Content>
                   <Card.Header>Ethereum</Card.Header>
+                  <Card.Meta>Address</Card.Meta>
                   <Card.Description content='0x8B2b2520fc14b8a625D40ee3CBccAa2061b53504' />
                 </Card.Content>
               </Card>
@@ -58,14 +59,16 @@ class About extends Component {
               <Card className='card-text'>
                 <Card.Content>
                   <Card.Header>Nano</Card.Header>
-                  <Card.Description>0x8B2b2520fc14b8a625D40ee3CBccAa2061b53504</Card.Description>
+                  <Card.Meta>Address</Card.Meta>
+                  <Card.Description content='0x8B2b2520fc14b8a625D40ee3CBccAa2061b53504' />
                 </Card.Content>
               </Card>
 
               <Card className='card-text'>
                 <Card.Content>
                   <Card.Header>Bitcoin (BCH)</Card.Header>
-                  <Card.Description>0x8B2b2520fc14b8a625D40ee3CBccAa2061b53504</Card.Description>
+                  <Card.Meta>Address</Card.Meta>
+                  <Card.Description content='0x8B2b2520fc14b8a625D40ee3CBccAa2061b53504' />
                 </Card.Content>
               </Card>
             </Card.Group>
