@@ -23,7 +23,7 @@ class Header extends Component {
               <Menu.Item  position="right" href='/about'>
                 About
               </Menu.Item>
-              <Menu.Item href='/about'>
+              <Menu.Item href='https://github.com/PresidentPorpoise/Simple-Chatroom-DApp'>
                 Github
               </Menu.Item>
             </Menu>
