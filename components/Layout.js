@@ -2,10 +2,11 @@ import React from 'react';
 import { Container } from 'semantic-ui-react';
 import Head from 'next/head';
 import Header from './Header';
+import Footer from './Footer';
 
 export default (props) => {
   return (
-    <Container>
+    <div>
       <Head>
         <link
           rel="stylesheet"
@@ -15,6 +16,7 @@ export default (props) => {
 
       <Header />
       {props.children}
-    </Container>
+      <Footer />
+    </div>
   );
 };
