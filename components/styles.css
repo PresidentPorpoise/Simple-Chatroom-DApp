@@ -5,13 +5,17 @@
   font-weight: bold;
 }
 
-#banner {
+.banner {
   background-color: #3c2fca;
   height: 20em;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+}
+
+#miniBanner {
+  height: 10em !important;
 }
 
 #footer {
@@ -21,6 +25,7 @@
   padding: 3em;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
  footer a:hover {
@@ -30,6 +35,14 @@
 
 footer a {
   color: #2f6cca;
+}
+
+#iconLink {
+  color: inherit;
+}
+
+.card-text {
+  word-wrap: break-word;
 }
 
 /*
