@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Card, Button, Container, Divider, Label, List, Icon, Form, Grid, Segment } from 'semantic-ui-react';
+
+import { Card, Button, Container, Divider, Label, List, Icon, Form, Grid, 
+  Segment, Message } from 'semantic-ui-react';
+
 import chatroom from '../ethereum/chatroom';
 import web3 from '../ethereum/web3';
 import Layout from '../components/Layout';
@@ -7,7 +10,11 @@ import Layout from '../components/Layout';
 class Index extends Component {
   state= {
     messageContent: '',
-    usernameContent: ''
+    usernameContent: '',
+    msgLoading: false,
+    usrLoading: false,
+    msgError: '',
+    usrError: ''
   };
 
   static async getInitialProps() {
@@ -55,18 +62,34 @@ class Index extends Component {
     event.preventDefault();
     const accounts = await web3.eth.getAccounts();
 
-    await chatroom.methods.sendMessage(this.state.messageContent).send({
-      from: accounts[0]
-    });
+    this.setState({ msgLoading: true});
+
+    try {
+      await chatroom.methods.sendMessage(this.state.messageContent).send({
+        from: accounts[0]
+      });
+    } catch (err) {
+      this.setState({ msgError: err.message });
+    }
+
+    this.setState({ msgLoading: false});
   }
 
   onChange = async (event) => {
     event.preventDefault();
     const accounts = await web3.eth.getAccounts();
 
-    await chatroom.methods.setUsername(this.state.usernameContent).send({
-      from: accounts[0]
-    });
+    this.setState({ usrLoading: true });
+
+    try {
+      await chatroom.methods.setUsername(this.state.usernameContent).send({
+        from: accounts[0]
+      });
+    } catch (err) {
+      this.setState({ usrError: err.message });
+    }
+
+    this.setState({ usrLoading: false });
   }
 
   getAuthors(index) {
@@ -126,12 +149,12 @@ class Index extends Component {
           <div className="banner">
             <h1>Simple Chatroom Dapp</h1>
           </div>
-          <Container style={{ paddingTop: 20, paddingBottom: 20}}>
+          <Container id='index-body'>
             <Grid padded stackable>
               <Grid.Row columns={1}>
                 <Grid.Column>
                   <div style={{height: '40em'}}>
-                    <Segment style={{minHeight: '40em', maxHeight: '35em', overflow: 'auto' }} id="chat">
+                    <Segment id="chat">
                       <List>
                         {this.renderChat()}
                       </List>
@@ -142,13 +165,13 @@ class Index extends Component {
               <Grid.Row columns={2}>
                 <Grid.Column>
                   <Segment>
-                    <Form onSubmit={this.onSend}>
+                    <Form onSubmit={this.onSend} error={!!this.state.msgError}>
                       <Form.Field>
                         <label>Send a Message</label>
                         <Form.Input required
                           placeholder="Enter a message..."
                           value={this.state.messageContent}
-                          onChange={event => this.setState({ messageContent: event.target.value})}
+                          onChange={event => this.setState({ messageContent: event.target.value })}
                         />
                       </Form.Field>
 
@@ -156,27 +179,33 @@ class Index extends Component {
                         content='Send'
                         icon='send'
                         primary
+                        loading={this.state.msgLoading}
                       />
+
+                      <Message className='Message' error header="Oops!" content={this.state.msgError} />
                     </Form>
                   </Segment>
                 </Grid.Column>
 
                 <Grid.Column>
                   <Segment>
-                    <Form onSubmit={this.onChange}>
+                    <Form onSubmit={this.onChange} error={!!this.state.usrError}>
                       <Form.Field>
                         <label>Change Username</label>
                         <Form.Input required
                           placeholder="Enter a new username..."
                           value={this.state.usernameContent}
-                          onChange={event => this.setState({ usernameContent: event.target.value})}
+                          onChange={event => this.setState({ usernameContent: event.target.value })}
                         />
                       </Form.Field>
 
                       <Button
                         content='Change'
                         icon='pencil'
+                        loading={this.state.usrLoading}
                       />
+
+                      <Message className='Message' error header="Oops!" content={this.state.usrError} />
                     </Form>
                   </Segment>
                 </Grid.Column>
