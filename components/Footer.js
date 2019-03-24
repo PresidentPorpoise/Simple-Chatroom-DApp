@@ -7,14 +7,31 @@ class Footer extends Component {
     return(
       <footer>
         <div id='footer'>
-          <div style={{ paddingTop: '0.5em' }}>
+          <div id='footer-content'>
             <p>Developed by Bryce Champaign<br/>
             <Link href='https://www.brycechampaign.me'>
             <a>www.brycechampaign.me</a></Link></p>
           </div>
-          <Link href='https://github.com/PresidentPorpoise/Simple-Chatroom-DApp'>
-          <a id='iconLink'><Icon name='github' floated='right' size='large' link />
-          </a></Link>
+
+          <div>
+            <Link href='https://github.com/PresidentPorpoise'>
+              <a id='iconLink'>
+                <Icon name='github' size='big' link />
+              </a>
+            </Link>
+
+            <Link href='https://twitter.com/Bryce57537732'>
+              <a id='iconLink'>
+                <Icon name='twitter' size='big' link />
+              </a>
+            </Link>
+
+            <Link href='https://www.linkedin.com/in/bryce-champaign/'>
+              <a id='iconLink'>
+                <Icon name='linkedin' size='big' link />
+              </a>
+            </Link>
+          </div>
         </div>
       </footer>
     );
