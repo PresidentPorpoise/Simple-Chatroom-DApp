@@ -123,7 +123,10 @@ class Index extends Component {
     return(
       <Layout>
         <div>
-          <Container>
+          <div id="banner">
+            <h1>Simple Chatroom Dapp</h1>
+          </div>
+          <Container style={{ paddingTop: 20, paddingBottom: 20}}>
             <Grid padded stackable>
               <Grid.Row columns={1}>
                 <Grid.Column>
