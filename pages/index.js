@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Card, Button, Container, Divider, Label, List, Icon, Form, Grid, 
+import { Card, Button, Container, Divider, Label, List, Icon, Form, Grid,
   Segment, Message } from 'semantic-ui-react';
 
 import chatroom from '../ethereum/chatroom';
@@ -54,7 +54,7 @@ class Index extends Component {
 
       authors.push(author);
     }
-    console.log(authors);
+
     return { chatLog, authors, usernames }
   }
 
